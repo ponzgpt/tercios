@@ -1,0 +1,478 @@
+:root {
+  --ink: #2b2118;
+  --ink-soft: #6b5a48;
+  --parchment: #f4ead3;
+  --parchment-dark: #e6d6b2;
+  --night: #1b1612;
+  --night-2: #2a221b;
+  --crimson: #9b1c1c;
+  --crimson-dark: #741414;
+  --gold: #c9a227;
+  --green: #3f6b2e;
+  --pikes: #7a5a3a;
+  --shot: #9b1c1c;
+  --radius: 10px;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% 0%, #3a2c20 0%, transparent 60%), var(--night);
+  color: var(--parchment);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.top {
+  text-align: center;
+  padding: 20px 16px 8px;
+}
+
+.top h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Aspa de Borgoña sugerida con dos trazos rojos bajo el título. */
+.top h1::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 6px auto 0;
+  background: var(--crimson);
+  border-radius: 2px;
+}
+
+.tagline {
+  margin: 6px 0 0;
+  color: var(--parchment-dark);
+  font-style: italic;
+}
+
+.resources {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgb(27 22 18 / 92%);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #4a3b2c;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--parchment-dark);
+}
+
+.stat strong {
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat small {
+  color: var(--parchment-dark);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.card {
+  background: linear-gradient(180deg, var(--parchment), var(--parchment-dark));
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow:
+    0 2px 0 #b89c68 inset,
+    0 6px 18px rgb(0 0 0 / 40%);
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  color: var(--crimson-dark);
+  border-bottom: 1px solid #c8b38a;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+}
+
+.subhead {
+  margin-top: 16px !important;
+  margin-bottom: 8px !important;
+}
+
+.muted {
+  color: var(--ink-soft);
+  margin: 2px 0;
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+.cost {
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.count {
+  color: var(--crimson);
+  font-variant-numeric: tabular-nums;
+}
+
+.row,
+.upgrade {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px dashed #c8b38a;
+}
+
+.row:first-of-type {
+  border-top: 0;
+}
+
+.row-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.btn {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  min-height: 40px;
+  border-radius: 8px;
+  border: 1px solid #8a6e45;
+  background: #fffaf0;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+
+.btn:hover:not(:disabled) {
+  background: #fff3d6;
+  border-color: var(--crimson);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--crimson);
+  border-color: var(--crimson-dark);
+  color: #fff;
+  font-weight: 700;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--crimson-dark);
+  color: #fff;
+}
+
+.btn-danger {
+  color: var(--crimson);
+  border-color: var(--crimson);
+}
+
+.tag {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e0cfa8;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Barra de proporción */
+.bar-legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.bar {
+  position: relative;
+  display: flex;
+  height: 22px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #d7c49b;
+  border: 1px solid #8a6e45;
+}
+
+.bar-pikes {
+  background: var(--pikes);
+  transition: width 0.2s;
+}
+
+.bar-shot {
+  background: var(--shot);
+  transition: width 0.2s;
+}
+
+.bar-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: rgb(201 162 39 / 30%);
+  border-left: 1px dashed var(--gold);
+  border-right: 1px dashed var(--gold);
+}
+
+.bar-ideal {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 3px;
+  margin-left: -1px;
+  background: var(--gold);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+.ratio {
+  margin: 8px 0 0;
+  font-weight: 700;
+}
+
+.bonus {
+  margin: 2px 0;
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* Batallas */
+.battles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.battles li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  border: 1px solid transparent;
+}
+
+.battles li[data-state='won'] {
+  opacity: 0.7;
+}
+
+.battles li[data-state='next'] {
+  border-color: var(--crimson);
+  background: #fff7e6;
+}
+
+.battles li[data-state='locked'] {
+  opacity: 0.5;
+}
+
+.battle-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.battle-status {
+  font-weight: 700;
+}
+
+.locked-campaign {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px dashed #8a6e45;
+  border-radius: 8px;
+  opacity: 0.6;
+}
+
+/* Mejoras */
+.upgrade[data-state='locked'] {
+  opacity: 0.55;
+}
+
+.upgrade[data-state='owned'] h3::after {
+  content: ' ✓';
+  color: var(--green);
+}
+
+.prestige {
+  margin: 10px 0;
+  padding: 12px;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  background: #fff7e0;
+}
+
+/* Crónica */
+.chronicle {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.chronicle li {
+  padding: 4px 0;
+  border-bottom: 1px dotted #c8b38a;
+}
+
+.chronicle li:first-child {
+  font-weight: 700;
+}
+
+.chronicle .good {
+  color: var(--green);
+}
+
+.chronicle .bad {
+  color: var(--crimson);
+}
+
+textarea {
+  width: 100%;
+  font:
+    0.8rem ui-monospace,
+    monospace;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #8a6e45;
+  background: #fffaf0;
+  color: var(--ink);
+  margin-bottom: 8px;
+  resize: vertical;
+}
+
+.away {
+  border: 0;
+  border-radius: var(--radius);
+  padding: 20px;
+  max-width: min(420px, calc(100vw - 32px));
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--serif);
+}
+
+.away::backdrop {
+  background: rgb(0 0 0 / 60%);
+}
+
+.away h2 {
+  color: var(--crimson-dark);
+}
+
+.foot {
+  text-align: center;
+  padding: 16px;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.foot a {
+  color: var(--parchment-dark);
+}
+
+@media (max-width: 520px) {
+  .resources {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid {
+    padding: 12px;
+    grid-template-columns: 1fr;
+  }
+
+  .row,
+  .upgrade {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .row-actions {
+    justify-content: flex-start;
+  }
+}
