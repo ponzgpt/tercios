@@ -16,6 +16,7 @@ export default tseslint.config(
       'no-restricted-properties': [
         'error',
         { object: 'Date', property: 'now', message: 'Inyecta el tiempo en src/core.' },
+        { object: 'Math', property: 'random', message: 'Inyecta el azar en src/core.' },
       ],
       'no-restricted-globals': ['error', 'window', 'document', 'localStorage', 'performance'],
     },
