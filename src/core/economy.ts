@@ -91,7 +91,9 @@ export const unitCost = (s: GameState, kind: UnitKind): number =>
   UNITS[kind].baseCost * costGrowth(s) ** (kind === 'piquero' ? s.piqueros : s.arcabuceros);
 
 export const recruitCost = (s: GameState): number =>
-  RECRUIT.baseCost * RECRUIT.growth ** s.reclutasComprados * (has(s, 'capitanes_leva') ? 0.5 : 1);
+  RECRUIT.baseCost *
+  RECRUIT.growth ** s.reclutasComprados *
+  (has(s, 'capitanes_leva') ? RECRUIT.capitanesCostMult : 1);
 
 /** Compra hasta `n` reclutas. Devuelve cuántos se compraron. */
 export function buyRecruits(s: GameState, n: number): number {

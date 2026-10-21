@@ -14,7 +14,7 @@ export const UNITS = {
 export type UnitKind = keyof typeof UNITS;
 
 /** Leva de reclutas: cada unidad necesita un recluta además de su equipo en ducados. */
-export const RECRUIT = { baseCost: 4, growth: 1.01 };
+export const RECRUIT = { baseCost: 4, growth: 1.01, capitanesCostMult: 0.5 };
 
 /** Paga: ducados por segundo. Cada victoria multiplica la paga (contribuciones y botín). */
 export const PAY = { base: 1, perUnit: 0.15, victoryMult: 1.75 };

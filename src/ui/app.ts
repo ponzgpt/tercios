@@ -1,4 +1,12 @@
-import { AUTOSAVE_MS, CAMPAIGNS, SHOP, UPGRADES, type UnitKind } from '../core/balance';
+import {
+  AUTOSAVE_MS,
+  BATTLE,
+  CAMPAIGNS,
+  OFFLINE_CAP_S,
+  SHOP,
+  UPGRADES,
+  type UnitKind,
+} from '../core/balance';
 import {
   buyShop,
   campaignWon,
@@ -295,7 +303,7 @@ function campaignPanel(): HTMLElement {
     h(
       'p',
       'muted small',
-      'Con el poder enemigo la victoria es segura; por debajo del 60 % es imposible. Una derrota cuesta un cuarto de la tropa.',
+      `Con el poder enemigo la victoria es segura; por debajo del ${percent(BATTLE.minRatio)} es imposible. Una derrota cuesta el ${percent(BATTLE.defeatLoss)} de la tropa.`,
     ),
     ...next,
   );
@@ -473,7 +481,7 @@ function reportOffline(r: OfflineReport): void {
     h(
       'p',
       '',
-      `Has estado ausente ${formatDuration(r.seconds)}${r.capped ? ' (máximo 8 h)' : ''}.`,
+      `Has estado ausente ${formatDuration(r.seconds)}${r.capped ? ` (máximo ${formatDuration(OFFLINE_CAP_S)})` : ''}.`,
     ),
     h(
       'ul',
